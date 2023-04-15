@@ -1,0 +1,11 @@
+import json
+import boto3
+client = boto3.client('rekognition')
+def lambda_handler(event, context):
+# TODO implement
+     bucket_name = "plant-disease-detection1"
+     file_name = "blight1.jpg"
+     response = client.detect_faces (Image={'S3Object':{'Bucket': bucket_name, 'Name': file_name}}, Attributes=['ALL'])
+# Process result
+     for face in response[ 'blightDetails']:
+          print(json.dumps (leaf, indent=2))
